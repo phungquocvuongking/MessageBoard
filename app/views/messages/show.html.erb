@@ -1,0 +1,18 @@
+<h2><%= @message.title  %></h2>
+<p><%= @message.description %></p>
+<p> Posted by <%= @message.user.email %> <%= time_ago_in_words(@message.created_at) %>  ago</p>
+
+<h3>comments:</h3>
+<%= render @message.comments %>
+
+<h3>Reply to Message:</h3>
+<%= render "comments/form" %>
+
+<%= link_to "Back", root_path %>
+
+<% if user_signed_in? %>
+  <% if @message.user_id == current_user.id %>
+    <%= link_to "Edit" ,edit_message_path(@message)  %>
+    <%= link_to "Delete" ,message_path(@message), method: :delete, data: {confirm:" are you sure?"}%>
+  <% end %>
+<% end %>

@@ -1,0 +1,5 @@
+<h1>Edit Comment</h1>
+<%= simple_form_for([@message,@comment]) do |f| %>
+  <%= f.input :content, label: "comment" %>
+  <%= f.button :submit, class: "btn btn-success btn-xs" %>
+<% end %>
